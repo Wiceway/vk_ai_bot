@@ -1,0 +1,1 @@
+"""VK AI Bot package."""
