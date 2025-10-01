@@ -36,10 +36,12 @@ async def main():
         logger.info("Database initialized successfully")
 
         # Initialize AI manager
+        assert Config.OPENAI_API_KEY is not None, "OPENAI_API_KEY must be set"
         ai = AIManager(Config.OPENAI_API_KEY, Config.OPENAI_MODEL)
         logger.info("AI manager initialized successfully")
 
         # Initialize bot
+        assert Config.VK_TOKEN is not None, "VK_TOKEN must be set"
         bot = Bot(token=Config.VK_TOKEN)
         logger.info("Bot initialized successfully")
 

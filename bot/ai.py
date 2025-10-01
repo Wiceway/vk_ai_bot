@@ -1,5 +1,5 @@
 import openai
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 import os
 
 
@@ -14,7 +14,7 @@ class AIManager:
         self,
         brain_role: Optional[str],
         brain_task: Optional[str],
-        conversation_history: List[Dict[str, any]],
+        conversation_history: List[Dict[str, Any]],
         response_length: str = "medium"
     ) -> str:
         """Generate AI response based on configuration and history."""
