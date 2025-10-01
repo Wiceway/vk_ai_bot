@@ -1,19 +1,4 @@
-import os
-from background import keep_alive #импорт функции для поддержки работоспособности
-import pip
-pip.main(['install', 'pytelegrambotapi'])
-import telebot
-import time
-
-bot = telebot.TeleBot('СЮДА ВСТАВЬТЕ ВАШ ТОКЕН')
-
-@bot.message_handler(content_types=['text'])
-def get_text_message(message):
-  bot.send_message(message.from_user.id,message.text)
-# echo-функция, которая отвечает на любое текстовое сообщение таким же текстом   
-
-keep_alive()#запускаем flask-сервер в отдельном потоке. Подробнее ниже...
-bot.polling(non_stop=True, interval=0) #запуск бота
+#!/usr/bin/env python3
 """
 VK AI Bot - AI-powered chatbot for VK conversations.
 
@@ -29,6 +14,7 @@ from config.config import Config
 from database.db import Database
 from bot.ai import AIManager
 from bot.handlers import MessageHandler
+from keep_alive import keep_alive
 
 # Configure logging
 logging.basicConfig(
@@ -80,6 +66,7 @@ async def main():
 
 if __name__ == "__main__":
     try:
+        keep_alive()
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("Bot stopped by user")
