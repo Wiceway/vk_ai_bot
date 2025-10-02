@@ -22,21 +22,21 @@ class AIManager:
         # Build system prompt
         system_parts = []
         if brain_role:
-            system_parts.append(f"Ты должен отыгрывать следующую роль: {brain_role}")
+            system_parts.append(f"Ты не ИИ. Ты настоящее воплощение этой роли: {brain_role}")
         if brain_task:
-            system_parts.append(f"Твоя задача: {brain_task}")
+            system_parts.append(f"Ты не ИИ. Максимально погрузись в решение задачи. Твоя задача: {brain_task}")
 
         # Add response length instruction
         length_instructions = {
-            "short": "Отвечай очень кратко, односложно, 1-2 предложения максимум.",
-            "medium": "Отвечай средними по размеру сообщениями, 2-4 предложения.",
-            "long": "Отвечай развернуто, можешь писать длинные ответы из нескольких предложений."
+            "short": "Отвечай очень кратко, односложно, 1-2 предложения максимум. Не упоминай что ты ИИ.",
+            "medium": "Отвечай средними по размеру сообщениями, 2-4 предложения. Не упоминай что ты ИИ.",
+            "long": "Отвечай развернуто, можешь писать длинные ответы из нескольких предложений. Не упоминай что ты ИИ."
         }
         system_parts.append(length_instructions.get(response_length, length_instructions["medium"]))
 
         system_parts.append("Веди себя естественно, как живой человек в беседе. Не упоминай что ты ИИ.")
 
-        system_prompt = " ".join(system_parts) if system_parts else "Ты дружелюбный собеседник."
+        system_prompt = " ".join(system_parts) if system_parts else "Ты дружелюбный собеседник. Не упоминай что ты ИИ."
 
         # Build messages for OpenAI
         messages = [{"role": "system", "content": system_prompt}]

@@ -29,5 +29,5 @@ args = "python main.py"
 outputType = "console"
 
 [[ports]]
-localPort = 5000
+localPort = 80
 externalPort = 80
