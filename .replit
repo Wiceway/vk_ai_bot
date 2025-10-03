@@ -31,3 +31,8 @@ outputType = "console"
 [[ports]]
 localPort = 80
 externalPort = 80
+
+[deployment]
+deploymentTarget = "vm"
+ignorePorts = true
+run = ["python", "main.py"]

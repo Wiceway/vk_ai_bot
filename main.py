@@ -25,10 +25,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-bot = vkbottle.Bot(os.getenv("VK"))
-
-keep_alive()#запускаем flask-сервер в отдельном потоке. Подробнее ниже...
-bot.polling(non_stop=True, interval=0) #запуск бота
 
 async def main():
     """Main entry point for the bot."""
